@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface Contact {
+type Contact = {
     id: string;
     name: string;
 }
 
 interface InitialState {
-    readonly list: Contact[];
+    list: Contact[];
 }
 
 const initialState: InitialState = {
@@ -29,4 +29,3 @@ const contactsSlice = createSlice({
 
 export const { addContact } = contactsSlice.actions;
 export default contactsSlice.reducer;
-export type { Contact };
