@@ -1,13 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
+import selectedReducer from "./selectedSlice";
 import contactsReducer from "./contactsSlice";
 import conversationsReducer from "./conversationsSlice";
-import messagesReducer from "./messagesSlice";
 
 const store = configureStore({
     reducer : {
+        selected : selectedReducer,
         contacts : contactsReducer,
         conversations : conversationsReducer,
-        messages : messagesReducer
     }
 })
 
