@@ -5,11 +5,15 @@ type Message = {
     text: string;
 }
 
+interface Messages {
+    messages: Message[];
+}
+
 const MessageItem = ({ message }: { message: Message }) => (
     <li>{message.text}</li>
 );
 
-const MessageList = ({ messages }: { messages: Message[] }) => (
+const MessageList = ({ messages }: Messages) => (
     <ul>
         {messages.map((message) => (
             <MessageItem message={message} />

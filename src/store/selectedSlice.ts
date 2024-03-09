@@ -12,11 +12,11 @@ const selectedSlice = createSlice({
     name: 'selected',
     initialState,
     reducers: {
-        setSelected(state, action: PayloadAction<string>) {
+        selectContact(state, action: PayloadAction<string>) {
             state.id = action.payload;
         }
     }
 });
 
-export const { setSelected } = selectedSlice.actions;
+export const { selectContact } = selectedSlice.actions;
 export default selectedSlice.reducer;

@@ -5,11 +5,17 @@ type Contact = {
     name: string;
 };
 
+interface Conversations {
+    contacts: Contact[];
+    selected: string | null;
+    onSelect: (id: string) => void;
+}
+
 const ConversationItem = ({ contact }: { contact: Contact }) => (
     <li>{contact.name}</li>
 );
 
-const ConversationList = ({ contacts }: { contacts: Contact[] }) => (
+const ConversationList = ({ contacts, selected, onSelect } : Conversations) => (
     <ul>
         {contacts.map((contact) => (
             <ConversationItem contact={contact} />

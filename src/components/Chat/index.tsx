@@ -1,32 +1,42 @@
 'use client';
 
 import React from 'react';
-import { useSelector } from 'react-redux';
+
+import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@/store';
+import { selectContact } from '@/store/selectedSlice';
 
 import { ContactList } from './Contacts';
 import { ConversationList } from './Conversations';
 import { MessageList } from './Messages'; 
 
 const Contacts = () => {
-    let contacts = useSelector((state: RootState) => state.contacts.list);
+    const contacts = useSelector((state: RootState) => state.contacts.list);
     return (
         <ContactList contacts={contacts} />
     )
 };
 
 const Conversations = () => {
-    let conversations = useSelector((state: RootState) => state.conversations.map);
-    let contacts = useSelector((state: RootState) => state.contacts.list);
+    const conversations = useSelector((state: RootState) => state.conversations.map);
+    const contacts = useSelector((state: RootState) => state.contacts.list);
+
+    const dispatch = useDispatch();
+    const selected = useSelector((state: RootState) => state.selected.id);
+    const onSelect = (id: string) => dispatch(selectContact(id));
     
     return (
-        <ConversationList contacts={contacts.filter((contact) => conversations[contact.id])} />
+        <ConversationList 
+            contacts={contacts.filter((contact) => conversations[contact.id])}
+            selected={selected}
+            onSelect={onSelect}
+        />
     )
 }
 
 const Messages = () => {
-    let messages = useSelector((state: RootState) => state.conversations.map);
-    let selected = useSelector((state: RootState) => state.selected.id);
+    const messages = useSelector((state: RootState) => state.conversations.map);
+    const selected = useSelector((state: RootState) => state.selected.id);
 
     return selected ? (
         <MessageList messages={messages[selected]} />
