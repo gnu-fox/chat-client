@@ -1,6 +1,6 @@
 import React from "react";
 
-interface Sender {
+type Sender = {
     text: string;
 }
 
@@ -12,7 +12,7 @@ const SenderButton = () => (
     <button>Send</button>
 );
 
-const SenderForm = ({ text } : Sender) => (
+const SenderForm = ({ sender }: { sender: Sender }) => (
     <form>
         <SenderInput />
         <SenderButton />

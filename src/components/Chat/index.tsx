@@ -1,46 +1,43 @@
-'use client';
+'use client'
 
-import React from 'react';
-
-import { useSelector, useDispatch } from 'react-redux';
+import React from "react"
+import { useSelector, useDispatch } from "react-redux"
 import { RootState } from '@/store';
-import { selectContact } from '@/store/selectedSlice';
 
-import { ContactList } from './Contacts';
-import { ConversationList } from './Conversations';
-import { MessageList } from './Messages'; 
+import { ContactList } from "./Contacts"; 
+import { ConversationList } from "./Conversations";
+import { MessageList } from "./Messages";
+import { SenderForm } from "./Sender"; 
 
-const Contacts = () => {
+function Contacts({ onSelect } : { onSelect: (id: string) => void }) {
     const contacts = useSelector((state: RootState) => state.contacts.list);
-    return (
-        <ContactList contacts={contacts} />
-    )
-};
 
-const Conversations = () => {
+    return <ContactList 
+        contacts={contacts}
+        onSelect={onSelect}
+    />
+}
+
+function Conversations({ selected, onSelect } : { selected: string | null, onSelect: (id: string) => void }) {
     const conversations = useSelector((state: RootState) => state.conversations.map);
     const contacts = useSelector((state: RootState) => state.contacts.list);
-
-    const dispatch = useDispatch();
-    const selected = useSelector((state: RootState) => state.selected.id);
-    const onSelect = (id: string) => dispatch(selectContact(id));
     
-    return (
-        <ConversationList 
-            contacts={contacts.filter((contact) => conversations[contact.id])}
-            selected={selected}
-            onSelect={onSelect}
-        />
-    )
+    return <ConversationList 
+        contacts={contacts.filter((contact) => conversations[contact.id])}
+        selected={selected}
+        onSelect={onSelect}
+    />
 }
 
-const Messages = () => {
+function Messages({selected} : { selected: string }) {
     const messages = useSelector((state: RootState) => state.conversations.map);
-    const selected = useSelector((state: RootState) => state.selected.id);
+    return <MessageList messages={messages[selected]} />
 
-    return selected ? (
-        <MessageList messages={messages[selected]} />
-    ) : null
 }
 
-export { Contacts, Conversations, Messages };
+function Sender({selected} : { selected: string }) {
+    const senders = useSelector((state: RootState) => state.sender.map);
+    return <SenderForm sender={senders[selected]} />
+}
+
+export { Contacts, Conversations, Messages, Sender }
