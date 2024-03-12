@@ -1,11 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import senderReducer from "./senderSlice";
+import inputsReducer from "./inputsSlice";
 import contactsReducer from "./contactsSlice";
 import conversationsReducer from "./conversationsSlice";
 
 const store = configureStore({
     reducer: {
-        sender: senderReducer,
+        inputs: inputsReducer,
         contacts: contactsReducer,
         conversations: conversationsReducer,
     }

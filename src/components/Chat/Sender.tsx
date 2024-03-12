@@ -1,22 +1,29 @@
 import React from "react";
 
-type Sender = {
+type Input = {
     text: string;
 }
 
-const SenderInput = () => (
-    <input type = "text" />
-);
+type Message = {
+    direction: 'incoming' | 'outgoing';
+    text: string;
+}
 
-const SenderButton = () => (
-    <button>Send</button>
-);
+interface Sender {
+    input: Input;
+    onChange: (text: string) => void;
+    onSend: (message: Message) => void;
+}
 
-const SenderForm = ({ sender }: { sender: Sender }) => (
-    <form>
-        <SenderInput />
-        <SenderButton />
-    </form>
+const SenderForm = ({ input, onChange, onSend }: Sender) => (
+    <input 
+        type='text' 
+        value={input.text} 
+        onChange={(e) => onChange(e.target.value)}
+        onSubmit={(event) => {
+            onSend({ direction: 'outgoing', text: input.text }); event.preventDefault();
+        }}
+    />
 );
 
 export { SenderForm };

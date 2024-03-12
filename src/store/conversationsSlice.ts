@@ -34,12 +34,12 @@ const conversationsSlice = createSlice({
     name: 'conversations',
     initialState,
     reducers: {
-        addMessage(state, action: PayloadAction<{ contactId: string; message: Message }>) {
-            const { contactId, message } = action.payload;
-            state.map[contactId].push(message);
+        sendMessage(state, action: PayloadAction<{ id: string; message: Message }>) {
+            const { id, message } = action.payload;
+            state.map[id].push(message);
         }
     }
 });
 
-export const { addMessage } = conversationsSlice.actions;
+export const { sendMessage } = conversationsSlice.actions;
 export default conversationsSlice.reducer;

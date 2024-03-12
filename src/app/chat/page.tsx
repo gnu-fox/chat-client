@@ -7,9 +7,8 @@ import { Provider } from "react-redux";
 import { Container, Main, Header, Footer, Aside } from "@/app/chat/layout";
 import { Contacts, Conversations, Messages, Sender } from "@/components/Chat"; 
 
-
-function Chat () {
-    const [selectedContact, setSelectedContact] = React.useState<string | null>('1');
+export default function Chat () {
+    const [selectedContact, setSelectedContact] = React.useState<string | null>(null);
 
     return (
         <Provider store={store}>
@@ -47,6 +46,3 @@ function Chat () {
         </Provider>
     )
 }
-
-
-export default Chat;
