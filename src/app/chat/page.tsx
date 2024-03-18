@@ -9,6 +9,7 @@ import { Contacts, Conversations, Messages, Sender } from "@/components/Chat";
 
 export default function Chat () {
     const [selectedContact, setSelectedContact] = React.useState<string | null>(null);
+    const [showContacts, setShowContacts] = React.useState<boolean>(true);
 
     return (
         <Provider store={store}>
@@ -21,7 +22,15 @@ export default function Chat () {
                         <h1>Settings</h1>
                     </Header>
 
-                    <Conversations selected={selectedContact} onSelect={setSelectedContact} />
+                    { showContacts ? 
+                        <Contacts onSelect={setSelectedContact} /> 
+                    :   
+                        <Conversations selected={selectedContact} onSelect={setSelectedContact} />
+                    }
+
+                    <div>
+                        <button onClick={() => setShowContacts(!showContacts)}>Toggle</button>
+                    </div>
 
                 </Aside>
 

@@ -5,12 +5,7 @@
     margin-right: 10px;
 }
 
-.contact-conversation {
-    display: flex;
-    flex-direction: column;
-}
-
-.conversation-item-container {
+.contact-item-container {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -20,11 +15,11 @@
     border-bottom: 1px solid #ddd;
 }
 
-.conversation-item-container:hover {
-    background-color: #e4efff;
+.contact-item-container:hover {
+    background-color: #e4efff; /* Change to the desired hover background color */
 }
 
-.conversation-list {
+.contact-list {
     list-style-type: none;
     background-color: #f0f0f0;
     width: 100%;
@@ -32,19 +27,8 @@
     margin: 0;
 }
 
-.selected {
-    background-color: #cfe0f8;
-}
-
 .contact-name {
     font-size: 18px;
-    font-weight:500;
+    font-weight: 500;
     color: #050505;
-}
-
-.last-message {
-    font-size: 16px;
-    font-weight:200;
-    color: #414141;
-    margin-top: 10px;
 }

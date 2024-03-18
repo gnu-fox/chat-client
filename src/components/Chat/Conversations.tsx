@@ -19,13 +19,16 @@ interface Conversation {
 }
 
 function conversationClass(contact: Contact, selected: string | null): string {
-    return `conversation-item ${contact.id === selected ? 'selected' : ''}`;
+    return `conversation-item-container ${contact.id === selected ? 'selected' : ''}`;
 }
 
 const ConversationItem = ({ contact, selected, onSelect, lastest}: Conversation) => (
     <li className={conversationClass(contact, selected)} onClick={()=>onSelect(contact.id)}>
-        <p className='contact-name'>{contact.name}</p>
-        <p className='last-message'>{lastest.text}</p>
+        <img className='contact-thumbnail' src="http://www.gravatar.com/avatar/?d=identicon"/>
+        <div className='contact-conversation'>
+            <p className='contact-name'>{contact.name}</p>
+            <p className='last-message'>{lastest.text}</p>
+        </div>
     </li>
 );
 
