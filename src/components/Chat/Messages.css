@@ -12,9 +12,10 @@
     padding: 12px;
     border-radius: 15px;
     margin: 8px 0;
-    max-width: 20%; /* Adjusted max-width */
+    max-width: 40%; /* Adjusted max-width */
     word-wrap: break-word; /* Wrap long words */
     overflow-wrap: break-word; /* Wrap long words for browser compatibility */
+    margin-bottom: 1px; /* Adjust the margin here */
 }
 
 .incoming {
@@ -24,7 +25,7 @@
 }
 
 .outgoing {
-    background-color: #0084ff;
+    background-color: dodgerblue;
     color: #fff;
     align-self: flex-end;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow */

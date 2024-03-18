@@ -1,4 +1,5 @@
 import React from "react";
+import "./Sender.css";
 
 type Input = {
     text: string;
@@ -16,14 +17,20 @@ interface Sender {
 }
 
 const SenderForm = ({ input, onChange, onSend }: Sender) => (
-    <input 
-        type='text' 
-        value={input.text} 
-        onChange={(e) => onChange(e.target.value)}
-        onSubmit={(event) => {
-            onSend({ direction: 'outgoing', text: input.text }); event.preventDefault();
-        }}
-    />
+    <form onSubmit={(event) => {
+        event.preventDefault();
+        onSend({ direction: 'outgoing', text: input.text });
+    }}>
+        <div className="sender-form-container">
+            <input 
+                type='text' 
+                className="sender-input"
+                value={input.text} 
+                onChange={(e) => onChange(e.target.value)}
+            />
+            <button type="submit" className="sender-button">Send</button>
+        </div>
+    </form>
 );
 
 export { SenderForm };

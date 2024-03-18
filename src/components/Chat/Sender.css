@@ -1,0 +1,40 @@
+Copy code
+.sender-form-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.sender-input {
+    flex: 1;
+    padding: 15px;
+    border: 2px solid #ccc;
+    border-radius: 25px;
+    margin-right: 20px;
+    font-size: 18px;
+    transition: border-color 0.3s ease;
+}
+
+.sender-input:focus {
+    outline: none;
+    border-color: dodgerblue;
+}
+
+.sender-button {
+    padding: 15px 25px;
+    background-color: dodgerblue;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.sender-button:hover {
+    background-color: #1e90ff;
+}
+
+.sender-button:active {
+    background-color: #0e60ce;
+}

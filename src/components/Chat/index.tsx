@@ -2,22 +2,22 @@
 
 import React from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { RootState } from '@/store';
-import { updateMessageText } from "@/store/inputsSlice"; 
-import { sendMessage } from "@/store/conversationsSlice";
+import { RootState } from '@/store'
+import { updateMessageText } from "@/store/inputsSlice"
+import { sendMessage } from "@/store/conversationsSlice"
 
-import { ContactList } from "./Contacts"; 
-import { ConversationList } from "./Conversations";
-import { MessageList } from "./Messages";
-import { SenderForm } from "./Sender"; 
+import { ContactList } from "./Contacts"
+import { ConversationList } from "./Conversations"
+import { MessageList } from "./Messages"
+import { SenderForm } from "./Sender"
 
 type Message = {
-    direction: 'incoming' | 'outgoing';
+    direction: 'incoming' | 'outgoing'
     text: string;
 }
 
 function Contacts({ onSelect } : { onSelect: (id: string) => void }) {
-    const contacts = useSelector((state: RootState) => state.contacts.list);
+    const contacts = useSelector((state: RootState) => state.contacts.list)
 
     return <ContactList 
         contacts={contacts}
@@ -26,15 +26,15 @@ function Contacts({ onSelect } : { onSelect: (id: string) => void }) {
 }
 
 function Conversations({ selected, onSelect } : { selected: string | null, onSelect: (id: string) => void }) {
-    const conversations = useSelector((state: RootState) => state.conversations.map);
-    const contacts = useSelector((state: RootState) => state.contacts.list);
-    const messages = useSelector((state: RootState) => state.conversations.map);
+    const conversations = useSelector((state: RootState) => state.conversations.map)
+    const contacts = useSelector((state: RootState) => state.contacts.list)
+    const messages = useSelector((state: RootState) => state.conversations.map)
 
     let lastest = new Map<string, Message>();
 
     Object.keys(messages).forEach((key) => {
         let message = messages[key];
-        lastest.set(key, message[message.length - 1]);
+        lastest.set(key, message[message.length - 1])
     });
 
     return <ConversationList 
@@ -52,16 +52,21 @@ function Messages({selected} : { selected: string }) {
 }
 
 function Sender({selected} : { selected: string }) {
-    const dispatch = useDispatch();
-    const inputs = useSelector((state: RootState) => state.inputs.map);
-    const messages = useSelector((state: RootState) => state.conversations.map);
+    const dispatch = useDispatch()
+    const inputs = useSelector((state: RootState) => state.inputs.map)
+    const messages = useSelector((state: RootState) => state.conversations.map)
 
     let input = inputs[selected];
+
+    const onSend = (message: Message) => {
+        dispatch(sendMessage({id: selected, message}))
+        dispatch(updateMessageText({id: selected, text: ''}))
+    }
 
     return <SenderForm
         input={input}
         onChange={(text) => dispatch(updateMessageText({id: selected, text}))}
-        onSubmit={() => dispatch(sendMessage({id: selected}))}
+        onSend={onSend}
     />
 }
 
