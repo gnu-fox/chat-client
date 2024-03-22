@@ -5,7 +5,7 @@ import React from "react";
 import store from "@/store";
 import { Provider } from "react-redux";
 import { Container, Main, Header, Footer, Aside } from "@/app/chat/layout";
-import { Contacts, Conversations, Messages, Sender } from "@/components/Chat"; 
+import { Contacts, Conversations, Messages, Sender, Bar } from "@/components/Chat"; 
 
 export default function Chat () {
     const [selectedContact, setSelectedContact] = React.useState<string | null>(null);
@@ -19,7 +19,9 @@ export default function Chat () {
                 <Aside>
 
                     <Header>
-                        <h1>Settings</h1>
+                        <div>
+                            <button onClick={() => setShowContacts(!showContacts)}>Toggle</button>
+                        </div>
                     </Header>
 
                     { showContacts ? 
@@ -28,17 +30,13 @@ export default function Chat () {
                         <Conversations selected={selectedContact} onSelect={setSelectedContact} />
                     }
 
-                    <div>
-                        <button onClick={() => setShowContacts(!showContacts)}>Toggle</button>
-                    </div>
-
                 </Aside>
 
                 { selectedContact ? <Main>
 
                     <Header>
 
-                        <h1>Chat</h1>
+                        <Bar selected={selectedContact}/>
 
                     </Header>
 

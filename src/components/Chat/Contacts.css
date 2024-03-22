@@ -1,3 +1,22 @@
+.contact-list {
+    list-style-type: none;
+    background-color: #f0f0f0;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    overflow-y: auto; /* Enable vertical scrollbar when content overflows */
+    background-image: linear-gradient(to right, #eeeeee, rgb(241, 241, 241)); /* Pretty bar background */
+}
+
+.contact-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.contact-list::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 4px;
+}
+
 .contact-thumbnail {
     width: 50px;
     height: 50px;
@@ -19,16 +38,10 @@
     background-color: #e4efff; /* Change to the desired hover background color */
 }
 
-.contact-list {
-    list-style-type: none;
-    background-color: #f0f0f0;
-    width: 100%;
-    padding: 0;
-    margin: 0;
-}
-
 .contact-name {
     font-size: 18px;
     font-weight: 500;
     color: #050505;
 }
+
+

@@ -6,7 +6,7 @@ type Message = {
     text: string;
 }
 
-const messageClass = (message : Message): string => {
+function messageClass(message : Message): string {
     return `message ${message.direction}`;
 };
 

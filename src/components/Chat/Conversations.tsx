@@ -4,6 +4,7 @@ import './Conversations.css';
 type Contact = {
     id: string;
     name: string;
+    avatar: string;
 };
 
 type Message = {
@@ -24,7 +25,7 @@ function conversationClass(contact: Contact, selected: string | null): string {
 
 const ConversationItem = ({ contact, selected, onSelect, lastest}: Conversation) => (
     <li className={conversationClass(contact, selected)} onClick={()=>onSelect(contact.id)}>
-        <img className='contact-thumbnail' src="http://www.gravatar.com/avatar/?d=identicon"/>
+        <img className='contact-thumbnail' src={contact.avatar}/>
         <div className='contact-conversation'>
             <p className='contact-name'>{contact.name}</p>
             <p className='last-message'>{lastest.text}</p>

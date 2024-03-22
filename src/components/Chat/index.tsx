@@ -10,6 +10,7 @@ import { ContactList } from "./Contacts"
 import { ConversationList } from "./Conversations"
 import { MessageList } from "./Messages"
 import { SenderForm } from "./Sender"
+import { ActivityItem } from "./Activity"
 
 type Message = {
     direction: 'incoming' | 'outgoing'
@@ -70,4 +71,17 @@ function Sender({selected} : { selected: string }) {
     />
 }
 
-export { Contacts, Conversations, Messages, Sender }
+function Bar({ selected } : { selected : string }) {
+    const contacts = useSelector((state: RootState) => state.contacts.list)
+    const activity = useSelector((state: RootState) => state.activity.map )
+
+    let contact = contacts.find((element) => element.id == selected)
+    if (!contact) { return null }
+
+    return <ActivityItem
+        contact={contact}
+        activity={activity[selected]}
+    />
+}
+
+export { Contacts, Conversations, Messages, Sender, Bar }

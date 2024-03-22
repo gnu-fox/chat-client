@@ -4,11 +4,12 @@ import './Contacts.css';
 type Contact = {
     id: string;
     name: string;
+    avatar: string;
 };
 
 const ContactItem = ({ contact, onSelect }: { contact: Contact, onSelect : (id : string) => void }) => (
     <li className='contact-item-container' onClick={() => onSelect(contact.id)} >
-        <img className='contact-thumbnail' src="http://www.gravatar.com/avatar/?d=identicon"/>
+        <img className='contact-thumbnail' src={contact.avatar}/>
         <div className='contact-item'>
             <p className='contact-name'>{contact.name}</p>
         </div>    

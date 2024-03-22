@@ -1,0 +1,26 @@
+.contact-thumbnail {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.activity-item-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.1s ease;
+    border-bottom: 1px solid #ddd;
+}
+
+.activity-item-container:hover {
+    background-color: #e4efff; /* Change to the desired hover background color */
+}
+
+.contact-name {
+    font-size: 18px;
+    font-weight: 500;
+    color: #050505;
+}
